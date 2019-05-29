@@ -19,6 +19,12 @@ build:
     - script:
         name: info/env
         code: env
+
+build-openjdk-8:
+    - script:
+        name: JDK Version
+        code: |
+          java -version
     - script:
         name: prepare gradlew
         code: |
