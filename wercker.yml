@@ -27,12 +27,6 @@ jdk8:
     - script:
         name: JDK Version
         code: java -version
-    # - script:
-    #     name: prepare gradlew
-    #     code: chmod +x ./gradlew
-    # - script:
-    #     name: gradle build
-    #     code: ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
     - wercker/gradle@1.0.3:
         name: gradle build
         task: build
@@ -47,9 +41,12 @@ jdk9:
     - script:
         name: JDK Version
         code: java -version
-    - wercker/gradle@1.0.3:
+    - script:
+        name: prepare gradlew
+        code: chmod +x ./gradlew
+    - script:
         name: gradle build
-        task: build
+        code: ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
     - script:
         name: move artifacts
         code: mv ./build ./build-jdk9
@@ -61,9 +58,12 @@ jdk10:
     - script:
         name: JDK Version
         code: java -version
-    - wercker/gradle@1.0.3:
+    - script:
+        name: prepare gradlew
+        code: chmod +x ./gradlew
+    - script:
         name: gradle build
-        task: build
+        code: ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
     - script:
         name: move artifacts
         code: mv ./build ./build-jdk10
