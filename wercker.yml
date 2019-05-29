@@ -67,3 +67,37 @@ jdk10:
     - script:
         name: move artifacts
         code: mv ./build ./build-jdk10
+
+jdk11:
+  box:
+    id: openjdk:11-jdk
+  steps:
+    - script:
+        name: JDK Version
+        code: java -version
+    - script:
+        name: prepare gradlew
+        code: chmod +x ./gradlew
+    - script:
+        name: gradle build
+        code: ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
+    - script:
+        name: move artifacts
+        code: mv ./build ./build-jdk11
+
+graalvm-ce-1.0.0-rc16:
+  box:
+    id: oracle/graalvm-ce:1.0.0-rc16
+  steps:
+    - script:
+        name: JDK Version
+        code: java -version
+    - script:
+        name: prepare gradlew
+        code: chmod +x ./gradlew
+    - script:
+        name: gradle build
+        code: ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
+    - script:
+        name: move artifacts
+        code: mv ./build ./build-graalvm-ce-1.0.0-rc16
