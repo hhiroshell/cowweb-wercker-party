@@ -20,27 +20,16 @@ build:
         name: info/env
         code: env
 
-build-openjdk-8:
+jdk8:
   box:
     id: openjdk:8-jdk
-    ports:
-      - 8080
   steps:
     - script:
         name: JDK Version
-        code: |
-          java -version
+        code: java -version
     - script:
         name: prepare gradlew
-        code: |
-          chmod +x ./gradlew
+        code: chmod +x ./gradlew
     - script:
         name: gradle build
-        code: |
-          ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
-    - script:
-        name: Run and IT
-        code: |
-          java -jar $WERCKER_ROOT/build/libs/cowweb-1.0.jar &
-          sleep 5
-          ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR integrationTest
+        code: ./gradlew --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
