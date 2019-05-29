@@ -21,6 +21,11 @@ build:
         code: env
 
 build-openjdk-8:
+  box:
+    id: openjdk:8-jdk
+    ports:
+      - 8080
+  steps:
     - script:
         name: JDK Version
         code: |
