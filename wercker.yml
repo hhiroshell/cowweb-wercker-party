@@ -27,8 +27,11 @@ jdk8:
     - script:
         name: JDK Version
         code: java -version
-    - wercker/gradle@1.0.3:
-        name: gradle build
+    # - wercker/gradle@1.0.3:
+    #     name: gradle build
+    #     task: build
+    - hhiroshell/gradlew@0.1.0:
+        name: gradlew build
         task: build
     - script:
         name: move artifacts
