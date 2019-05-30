@@ -30,7 +30,7 @@ jdk8:
     # - wercker/gradle@1.0.3:
     #     name: gradle build
     #     task: build
-    - hhiroshell/gradlew@0.1.0:
+    - hhiroshell/gradlew@0.1.1:
         name: gradlew build
         task: build
     - script:
